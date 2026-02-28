@@ -1,73 +1,35 @@
-# React + TypeScript + Vite
+# Padel Manager - Frontend (UI)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bienvenido al repositorio central del Frontend para **Padel Manager**. Esta es la interfaz de usuario interactiva diseñada para optimizar y modernizar la gestión de torneos de pádel en el NEA, conectándose directamente con nuestra API para reemplazar los procesos manuales.
 
-Currently, two official plugins are available:
+## Estructura del Proyecto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+El frontend está organizado de manera modular para asegurar la escalabilidad y facilitar el trabajo en paralelo del equipo de desarrollo:
 
-## React Compiler
+* **Components:** Componentes de interfaz aislados y reutilizables.
+* **Pages:** Las pantallas principales de la aplicación.
+* **Services:** Archivos dedicados exclusivamente a la comunicación con el Backend.
+* **Hooks / Context:** Lógica de estado global y funciones personalizadas de React.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+## Stack Tecnológico
 
-## Expanding the ESLint configuration
+* **Librería Core:** React
+* **Entorno de Construcción:** Vite (con variante SWC)
+* **Lenguaje:** TypeScript
+* **Estandarización:** ESLint + Prettier
+* **IDE:** Visual Studio Code
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Reglas de Trabajo (Git Workflow)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Para mantener el código limpio y organizado en el **Team Versori 2**, utilizaremos el siguiente flujo:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+* **Ramas Principales:**
+  * `main`: Contiene el código estable y listo para producción.
+  * `development`: Rama principal de integración para nuevas funciones.
+* **Ramas de Tarea:**
+  * Para cada nueva funcionalidad o arreglo, crea una rama local partiendo desde `development`: `feature/nombre-de-la-tarea`.
+* **Commits:** Usa mensajes descriptivos en inglés.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+*Desarrollado por Team Versori 2.*
