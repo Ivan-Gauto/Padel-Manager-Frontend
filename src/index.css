@@ -1,68 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-headline: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-on-background: var(--on-background);
+  --color-surface: var(--surface);
+  --color-on-surface: var(--on-surface);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+  
+  --color-primary: var(--primary);
+  --color-primary-dim: var(--primary-dim);
+  --color-on-primary: var(--on-primary);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary-container: var(--on-primary-container);
+  
+  --color-secondary: var(--secondary);
+  --color-secondary-container: var(--secondary-container);
+  --color-on-secondary-container: var(--on-secondary-container);
+
+  --color-tertiary: var(--tertiary);
+  --color-tertiary-container: var(--tertiary-container);
+  --color-on-tertiary-container: var(--on-tertiary-container);
+
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --background: #fcfcff;
+  --on-background: #000000;
+  --surface: #ffffff;
+  --on-surface: #000000;
+  --surface-container-low: #f8faff;
+  --surface-container: #f1f4ff;
+  --surface-container-high: #e8edff;
+  --surface-container-highest: #dde4ff;
+  --primary: #3d29cc;
+  --primary-dim: #3a3399;
+  --on-primary: #ffffff;
+  --primary-container: #e0e0ff;
+  --on-primary-container: #3d29cc;
+  --secondary: #cc06ef;
+  --secondary-container: #fce7ff;
+  --on-secondary-container: #8e23a5;
+  --tertiary: #8e23a5;
+  --tertiary-container: #f3e5f5;
+  --on-tertiary-container: #4a148c;
+  --on-surface-variant: #475569;
+  --outline: #64748b;
+  --outline-variant: #cbd5e1;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.dark {
+  --background: #000000;
+  --on-background: #e7e7e7;
+  --surface: #000000;
+  --on-surface: #e7e7e7;
+  --surface-container-low: #0a0a0a;
+  --surface-container: #121212;
+  --surface-container-high: #1a1a1a;
+  --surface-container-highest: #222222;
+  --primary: #3d29cc;
+  --primary-dim: #3a3399;
+  --on-primary: #ffffff;
+  --primary-container: #2d1e99;
+  --on-primary-container: #e0dcfc;
+  --secondary: #cc06ef;
+  --secondary-container: #8e23a5;
+  --on-secondary-container: #ffffff;
+  --tertiary: #8e23a5;
+  --tertiary-container: #4a148c;
+  --on-tertiary-container: #f3e5f5;
+  --on-surface-variant: #a1a1aa;
+  --outline: #ffffff26;
+  --outline-variant: #ffffff14;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@layer base {
+  body {
+    @apply bg-background text-on-surface font-sans antialiased transition-colors duration-300;
+    min-height: 100vh;
   }
-  a:hover {
-    color: #747bff;
+
+  .dark body {
+    background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #150f2d 100%);
+    background-attachment: fixed;
   }
+
   button {
-    background-color: #f9f9f9;
+    @apply cursor-pointer transition-all duration-200 active:scale-95;
+  }
+}
+
+@layer components {
+  .kinetic-gradient {
+    background-image: radial-gradient(circle at 0% 0%, rgba(61, 41, 204, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(204, 6, 239, 0.03) 0%, transparent 50%);
+  }
+
+  .dark .kinetic-gradient {
+    background-image: radial-gradient(circle at 0% 0%, rgba(61, 41, 204, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(204, 6, 239, 0.05) 0%, transparent 50%);
+  }
+
+  .glass-card {
+    @apply bg-white/40 dark:bg-black/40 backdrop-blur-xl border border-white/30 dark:border-white/10 shadow-lg transition-all duration-300;
+  }
+
+  .dark .glass-card {
+    @apply bg-black/40 border-white/10 shadow-2xl;
+  }
+
+  .floating-nav {
+    @apply bg-surface/95 dark:bg-surface-container-low/95 backdrop-blur-md border border-outline-variant dark:border-white/5 shadow-md;
+  }
+  
+  .btn-interactive {
+    @apply transition-all duration-200 active:scale-95;
+  }
+  
+  .btn-primary-glow {
+    @apply bg-primary text-on-primary font-bold rounded-xl transition-all duration-200 hover:bg-primary/90 active:scale-95;
+  }
+  
+  .arrow-icon {
+    @apply transition-transform duration-200;
+  }
+
+  /* Custom Scrollbar for Glass UI */
+  .glass-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .glass-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .glass-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-on-surface-variant/10 rounded-full hover:bg-on-surface-variant/20 transition-colors;
   }
 }
